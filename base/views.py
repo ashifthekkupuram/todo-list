@@ -13,4 +13,12 @@ class HomeView(LoginRequiredMixin, ListView):
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
         context['tasks'] = context['tasks'].filter(author=self.request.user).order_by('completed')
+        
+        search_input = self.request.GET.get('search_input') or ''
+        
+        if search_input:
+            context['tasks'] = context['tasks'].filter(title__icontains=search_input)
+        
+        context['input'] = search_input
+        
         return context
