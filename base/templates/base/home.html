@@ -1,5 +1,42 @@
 {% extends 'index.html' %}
 {% block title %}Home{% endblock title %}
 {% block content %}
-<h1>Hello World</h1>
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Title</th>
+        <th scope="col">Status</th>
+        <th scope="col">Handle</th>
+      </tr>
+    </thead>
+    <tbody>
+      {% if tasks %}
+      {% for task in tasks %}
+      {% if task.completed %}
+      <tr class="table-success">
+        <td>{{ task.title }}</td>
+        <td>Completed</td>
+        <td>
+            <a href="" class="btn btn-primary">View</a>
+            <a href="" class="btn btn-secondary">Edit</a>
+            <a href="" class="btn btn-danger">Delete</a>
+        </td>
+      </tr>
+      {% else %}
+      <tr>
+        <td>{{ task.title }}</td>
+        <td>Not Completed</td>
+        <td>
+            <a href="" class="btn btn-primary">View</a>
+            <a href="" class="btn btn-secondary">Edit</a>
+            <a href="" class="btn btn-danger">Delete</a>
+        </td>
+      </tr>
+      {% endif %}
+      {% endfor %}
+      {% else %}
+      <legend>No Tasks were added!</legend>
+      {% endif %}
+    </tbody>
+</table>
 {% endblock content %}
