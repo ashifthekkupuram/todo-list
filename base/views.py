@@ -1,6 +1,7 @@
-from typing import Any
+from django.urls import reverse_lazy
 from django.shortcuts import render
-from django.views.generic import ListView,DetailView
+
+from django.views.generic import ListView,DetailView, CreateView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Task
 
@@ -33,3 +34,14 @@ class TaskView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
             return True
         else:
             return False
+        
+class TaskCreate(LoginRequiredMixin, CreateView):
+    model = Task
+    fields = ['title', 'discription']
+    success_url = reverse_lazy('home')
+
+    def form_valid(self, form):
+        task = form.save(commit=False)
+        task.author = self.request.user
+        task.save()
+        return super(TaskCreate, self).form_valid(form)        
