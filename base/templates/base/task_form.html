@@ -4,8 +4,12 @@
 {% block content %}
 <form method="POST">
     {% csrf_token %}
-    <legend>Create Task</legend>
+    <legend>{% if task %}Update Task - {{ task.title }}{% else %}Create Task{% endif %}</legend>
     {{ form | crispy }}
+    {% if task %}
+    <button type="submit" class="btn btn-secondary">Update</button>
+    {% else %}
     <button type="submit" class="btn btn-success">Create</button>
+    {% endif %}
 </form>
 {% endblock content %}
