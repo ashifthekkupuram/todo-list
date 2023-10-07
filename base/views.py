@@ -1,7 +1,7 @@
 from django.urls import reverse_lazy,reverse
 from django.shortcuts import render
 
-from django.views.generic import ListView,DetailView, CreateView,UpdateView
+from django.views.generic import ListView,DetailView, CreateView,UpdateView,DeleteView
 from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Task
 
@@ -60,3 +60,16 @@ class TaskUpdate(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
         
     def get_success_url(self):
         return reverse('task', kwargs={'pk':self.get_object().id})
+    
+
+class TaskDelete(LoginRequiredMixin, UserPassesTestMixin, DeleteView):
+    model = Task
+    context_object_name = 'task'
+    success_url = reverse_lazy('home')
+
+    def test_func(self):
+        task = self.get_object()
+        if task.author == self.request.user:
+            return True
+        else:
+            return False

@@ -1,6 +1,6 @@
 {% extends 'index.html' %}
 {% load crispy_forms_tags %}
-{% block title %}Create Task{% endblock title %}
+{% block title %}{% if task %}Update Task - {{ task.title }}{% else %}Create Task{% endif %}{% endblock title %}
 {% block content %}
 <form method="POST">
     {% csrf_token %}

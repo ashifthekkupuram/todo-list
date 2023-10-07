@@ -1,5 +1,5 @@
 {% extends 'index.html' %}
-{% block title %}Task - {% endblock title %}
+{% block title %}Task - {{ task.title }}{% endblock title %}
 {% block content %}
     <h1><strong>{{ task.title }}</strong></h1>
     {% if task.discription %}

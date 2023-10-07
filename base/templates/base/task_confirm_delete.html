@@ -1,0 +1,10 @@
+{% extends 'index.html' %}
+{% load crispy_forms_tags %}
+{% block title %}Delete Task - {{task.title}}{% endblock title %}
+{% block content %}
+<form method="POST">
+    {% csrf_token %}
+    <legend>Are you sure you wanna delete delete task {{task.title}}?</legend>
+    <button type="submit" class="btn btn-danger">Delete</button>
+</form>
+{% endblock content %}

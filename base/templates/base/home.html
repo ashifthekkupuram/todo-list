@@ -19,7 +19,7 @@
         <td>
             <a href="{% url 'task' task.id %}" class="btn btn-primary">View</a>
             <a href="{% url 'task-update' task.id %}" class="btn btn-secondary">Edit</a>
-            <a href="" class="btn btn-danger">Delete</a>
+            <a href="{% url 'task-delete' task.id %}" class="btn btn-danger">Delete</a>
         </td>
       </tr>
       {% else %}
@@ -29,7 +29,7 @@
         <td>
             <a href="{% url 'task' task.id %}" class="btn btn-primary">View</a>
             <a href="{% url 'task-update' task.id %}" class="btn btn-secondary">Edit</a>
-            <a href="" class="btn btn-danger">Delete</a>
+            <a href="{% url 'task-delete' task.id %}" class="btn btn-danger">Delete</a>
         </td>
       </tr>
       {% endif %}
