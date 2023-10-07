@@ -1,7 +1,7 @@
 from typing import Any
 from django.shortcuts import render
-from django.views.generic import ListView
-from django.contrib.auth.mixins import LoginRequiredMixin
+from django.views.generic import ListView,DetailView
+from django.contrib.auth.mixins import LoginRequiredMixin, UserPassesTestMixin
 from .models import Task
 
 # Create your views here.
@@ -22,3 +22,14 @@ class HomeView(LoginRequiredMixin, ListView):
         context['input'] = search_input
         
         return context
+
+class TaskView(LoginRequiredMixin, UserPassesTestMixin, DetailView):
+    model = Task
+    context_object_name = 'task'
+
+    def test_func(self):
+        task = self.get_object()
+        if task.author == self.request.user:
+            return True
+        else:
+            return False

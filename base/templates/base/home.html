@@ -17,7 +17,7 @@
         <td>{{ task.title }}</td>
         <td>Completed</td>
         <td>
-            <a href="" class="btn btn-primary">View</a>
+            <a href="{% url 'task' task.id %}" class="btn btn-primary">View</a>
             <a href="" class="btn btn-secondary">Edit</a>
             <a href="" class="btn btn-danger">Delete</a>
         </td>
@@ -27,7 +27,7 @@
         <td>{{ task.title }}</td>
         <td>Not Completed</td>
         <td>
-            <a href="" class="btn btn-primary">View</a>
+            <a href="{% url 'task' task.id %}" class="btn btn-primary">View</a>
             <a href="" class="btn btn-secondary">Edit</a>
             <a href="" class="btn btn-danger">Delete</a>
         </td>
