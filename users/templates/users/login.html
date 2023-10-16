@@ -6,6 +6,8 @@
     {% csrf_token %}
     <legend>Login Page</legend>
     {{ form | crispy }}
-    <button type="submit" class="btn btn-success">Login</button>
+    <button type="submit" class="mb-2 btn btn-success">Login</button>
+    <br>
+    <small class="text-muted">Haven't created an account? <a href="{% url 'register' %}">Register</a></small>
 </form>
 {% endblock content %}
