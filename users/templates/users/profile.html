@@ -5,5 +5,5 @@
 <h1>Email : {{user.email}}</h1>
 <h1>Username : {{user.username}}</h1>
 <a class="btn btn-secondary" href="{% url 'profile-update' user.id %}">Edit Profile</a>
-<a class="btn btn-secondary" href="">Change Password</a>
+<a class="btn btn-secondary" href="{% url 'password_change' %}">Change Password</a>
 {% endblock content %}
