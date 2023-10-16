@@ -4,7 +4,7 @@ from django.shortcuts import render
 from django.contrib.auth.views import LoginView,LogoutView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.urls import reverse_lazy
-from django.views.generic import FormView
+from django.views.generic import FormView,UpdateView,View
 from .forms import CustomUserCreationForm
 from django.contrib.auth import login
 from django.shortcuts import redirect
@@ -36,3 +36,7 @@ class UserRegisterView(FormView):
         if request.user.is_authenticated:
             return redirect('home')
         return super(UserRegisterView, self).get(request)
+    
+class ProfileView(LoginRequiredMixin, View):
+    def get(self, request):
+        return render(request, 'users/profile.html')
