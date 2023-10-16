@@ -4,6 +4,6 @@
 <legend>Profile</legend>
 <h1>Email : {{user.email}}</h1>
 <h1>Username : {{user.username}}</h1>
-<a class="btn btn-secondary" href="">Edit Profile</a>
+<a class="btn btn-secondary" href="{% url 'profile-update' user.id %}">Edit Profile</a>
 <a class="btn btn-secondary" href="">Change Password</a>
 {% endblock content %}

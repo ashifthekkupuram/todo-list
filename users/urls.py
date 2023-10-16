@@ -3,7 +3,8 @@ from .views import (
     LoginPage,
     LogoutPage,
     UserRegisterView,
-    ProfileView
+    ProfileView,
+    ProfileUpdateView
 )
 
 urlpatterns = [
@@ -11,4 +12,5 @@ urlpatterns = [
     path('logout/',LogoutPage.as_view(),name='logout'),
     path('register/',UserRegisterView.as_view(),name='register'),
     path('profile/',ProfileView.as_view(),name='profile'),
+    path('profile/<int:pk>',ProfileUpdateView.as_view(),name='profile-update'),
 ]
