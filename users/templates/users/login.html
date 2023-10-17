@@ -7,6 +7,7 @@
     <legend>Login Page</legend>
     {{ form | crispy }}
     <button type="submit" class="mb-2 btn btn-success">Login</button>
+    <small class="text-muted">Forgot Password? <a href="{% url 'password-reset' %}">Reset Password</a></small>
     <br>
     <small class="text-muted">Haven't created an account? <a href="{% url 'register' %}">Register</a></small>
 </form>
